@@ -32,3 +32,6 @@ install poetry
 `poetry add` to install new dependency
 There is no command to install everything from .txt, unfortunately
 
+### If you defined custom user
+
+use get_user_model() instead of User class
