@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.tokens import AccessToken
 
 
@@ -25,6 +25,6 @@ class AuthService:
             access_token = AccessToken(token)
             user_payload = access_token.payload
             id = user_payload.get('user_id')
-            return User.objects.get(pk=id)
+            return get_user_model().objects.get(pk=id)
         except:
             pass
