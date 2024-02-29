@@ -1,7 +1,7 @@
 import os
 from datetime import timedelta
 from pathlib import Path
-from dotenv import dotenv_values
+from dotenv import dotenv_values, load_dotenv
 
 
 DEBUG = True
@@ -10,13 +10,14 @@ DEBUG = True
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 CONFIG = dotenv_values(BASE_DIR.parent / ".env")
+load_dotenv(os.path.join(BASE_DIR.parent, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = CONFIG["DJANGO_SECRET_KEY"]
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
-DOMAIN = CONFIG["DOMAIN"]
-SERVER_IP = CONFIG["SERVER_IP"]
-SERVER_PORT = CONFIG["SERVER_PORT"]
+DOMAIN = os.getenv("DOMAIN")
+SERVER_IP = os.getenv("SERVER_IP")
+SERVER_PORT = os.getenv("SERVER_PORT")
 
 ALLOWED_HOSTS = [
     f"{SERVER_IP}",
@@ -125,11 +126,11 @@ WSGI_APPLICATION = "hackathon_project.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": CONFIG["DB_NAME"],
-        "USER": CONFIG["DB_USER"],
-        "PASSWORD": CONFIG["DB_PASSWORD"],
-        "HOST": CONFIG["DB_HOST"],
-        "PORT": CONFIG["DB_PORT"],
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT"),
     }
 }
 
