@@ -1,4 +1,6 @@
 # drf-hackathon-template
+When I needed such template, I tried different ones available on github including cookicutter, which was an overkill, and didn't find the fitting setup with docker/compose, poetry, postgres integration, custom user, jwt by email out of the box. Luckily, my template fits all of these needs and even has a useful cheatsheet. This repo wasnt made for public, so you may tweak some little things that you dont need
+
 
 In order to start developing you should:
 - add .env
